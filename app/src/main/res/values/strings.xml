@@ -12,11 +12,9 @@
     <string name="err_tunnel_start">Не удалось запустить туннель</string>
     <string name="err_tunnel_died">Туннель неожиданно остановился</string>
     <string name="err_generic">Не удалось запустить VPN</string>
-    <string name="err_no_apps_selected">Не выбрано ни одного приложения. Откройте «Приложения» и отметьте нужные.</string>
 
     <!-- Заголовки экранов -->
     <string name="settings_title">Настройки</string>
-    <string name="apps_title">Приложения</string>
     <string name="log_title">Журнал</string>
 
     <!-- Главный экран -->
@@ -34,8 +32,6 @@
     <string name="pac_info_downloaded">Правила маршрутизации: PAC от %1$s</string>
     <string name="menu_settings">Настройки</string>
     <string name="menu_log">Журнал</string>
-    <string name="main_pick_apps">Выберите приложения, для которых будет работать VPN</string>
-    <string name="action_choose">Выбрать</string>
     <string name="vpn_permission_denied">Без разрешения на VPN подключиться нельзя</string>
 
     <!-- Общие -->
@@ -50,10 +46,7 @@
 
     <!-- Настройки: приложения -->
     <string name="pref_cat_apps">Приложения</string>
-    <string name="pref_apps_title">Приложения для VPN</string>
-    <string name="pref_apps_summary_all">Все приложения, включая системные</string>
-    <string name="pref_apps_summary_include">Только выбранные: %1$d</string>
-    <string name="pref_apps_summary_exclude">Все, кроме выбранных: %1$d</string>
+    <string name="pref_apps_title">Только браузеры</string>
 
     <!-- Настройки: DNS -->
     <string name="pref_cat_dns">DNS</string>
@@ -108,20 +101,6 @@
     <string name="licenses_text">Zastra использует открытые компоненты:\n\n• hev-socks5-tunnel — MIT\n• lwIP — BSD\n• libyaml — MIT\n• hev-task-system — MIT\n• QuickJS-ng — MIT\n• OkHttp и Okio — Apache 2.0\n• AndroidX и Material Components — Apache 2.0\n\nВстроенный PAC-сценарий — проект AntiZapret.</string>
 
     <!-- Выбор приложений -->
-    <string name="apps_mode_all">Все</string>
-    <string name="apps_mode_include">Только эти</string>
-    <string name="apps_mode_exclude">Кроме этих</string>
-    <string name="apps_hint_all">VPN работает для всех приложений, включая системные. Выбирать ничего не нужно.</string>
-    <string name="apps_hint_include">VPN работает только для отмеченных приложений.</string>
-    <string name="apps_hint_exclude">VPN работает для всех приложений, кроме отмеченных.</string>
-    <string name="apps_restart_note">Изменения вступят в силу при следующем подключении.</string>
-    <string name="apps_search_hint">Поиск по названию</string>
-    <string name="apps_show_system">Системные приложения</string>
-    <string name="apps_select_all">Выбрать все</string>
-    <string name="apps_select_none">Снять все</string>
-    <string name="apps_counter">Выбрано: %1$d</string>
-    <string name="apps_empty">Ничего не найдено</string>
-    <string name="apps_system_tag">системное</string>
 
     <!-- Журнал -->
     <string name="log_empty">Журнал пуст</string>
@@ -138,4 +117,7 @@
     <string name="pac_err_check">PAC не прошёл проверку: %1$s</string>
     <string name="pac_err_save">Не удалось сохранить PAC: %1$s</string>
     <string name="lang_dialog_title" translatable="false">Язык / Language</string>
+    <string name="err_no_browsers">Не найдено ни одного браузера. Установите браузер и подключитесь снова.</string>
+    <string name="pref_apps_summary_list">VPN работает только для браузеров: %1$s</string>
+    <string name="pref_apps_summary_none">Браузеры не найдены</string>
 </resources>

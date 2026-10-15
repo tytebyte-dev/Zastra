@@ -18,10 +18,6 @@ object Keys {
     const val DNS_SECONDARY = "dns_secondary"
     const val DNS_FALLBACK = "dns_fallback"
 
-    const val APPS_MODE = "apps_mode"
-    const val APPS_SELECTED = "apps_selected"
-    const val APPS_SHOW_SYSTEM = "apps_show_system"
-
     const val PAC_URL = "pac_url"
     const val PAC_AUTO_UPDATE = "pac_auto_update"
     const val PAC_UPDATED_AT = "pac_updated_at"
@@ -31,22 +27,6 @@ object Keys {
     const val VPN_SHOULD_RUN = "vpn_should_run"
     const val NOTIF_ASKED = "notif_permission_asked"
     const val APP_LANGUAGE = "app_language"
-}
-
-/** Режим выбора приложений. */
-enum class AppMode(val value: String) {
-    /** VPN для всех приложений. */
-    ALL("all"),
-
-    /** VPN только для отмеченных приложений. */
-    INCLUDE("include"),
-
-    /** VPN для всех, кроме отмеченных. */
-    EXCLUDE("exclude");
-
-    companion object {
-        fun from(v: String?): AppMode = values().firstOrNull { it.value == v } ?: ALL
-    }
 }
 
 data class DnsSettings(
@@ -127,20 +107,6 @@ class Settings private constructor(context: Context) {
             fallbackToPlain = prefs.getBoolean(Keys.DNS_FALLBACK, true),
         )
     }
-
-    // ---------- приложения ----------
-
-    var appMode: AppMode
-        get() = AppMode.from(prefs.getString(Keys.APPS_MODE, AppMode.ALL.value))
-        set(v) = prefs.edit().putString(Keys.APPS_MODE, v.value).apply()
-
-    var selectedApps: Set<String>
-        get() = prefs.getStringSet(Keys.APPS_SELECTED, emptySet())?.toSet() ?: emptySet()
-        set(v) = prefs.edit().putStringSet(Keys.APPS_SELECTED, HashSet(v)).apply()
-
-    var showSystemApps: Boolean
-        get() = prefs.getBoolean(Keys.APPS_SHOW_SYSTEM, true)
-        set(v) = prefs.edit().putBoolean(Keys.APPS_SHOW_SYSTEM, v).apply()
 
     // ---------- PAC ----------
 

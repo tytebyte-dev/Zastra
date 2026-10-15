@@ -15,10 +15,28 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <!-- Нужно, чтобы показать в списке все приложения, включая системные -->
-    <uses-permission
-        android:name="android.permission.QUERY_ALL_PACKAGES"
-        tools:ignore="QueryAllPackagesPermission" />
+
+    <!-- Видимость браузеров для определения списка (VPN работает только для них) -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="http" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.APP_BROWSER" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="file" android:mimeType="text/html" />
+        </intent>
+    </queries>
 
     <application
         android:name=".ZastraApp"
@@ -51,13 +69,6 @@
             android:label="@string/settings_title"
             android:parentActivityName=".ui.MainActivity" />
 
-        <activity
-            android:name=".ui.AppsActivity"
-            android:resizeableActivity="true"
-            android:screenOrientation="fullUser"
-            android:exported="false"
-            android:label="@string/apps_title"
-            android:parentActivityName=".ui.SettingsActivity" />
 
         <activity
             android:name=".ui.LogActivity"

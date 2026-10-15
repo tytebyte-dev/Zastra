@@ -10,11 +10,9 @@
     <string name="err_tunnel_start">Could not start the tunnel</string>
     <string name="err_tunnel_died">The tunnel stopped unexpectedly</string>
     <string name="err_generic">Could not start the VPN</string>
-    <string name="err_no_apps_selected">No apps selected. Open “Apps” and tick the ones you need.</string>
 
     <!-- Screen titles -->
     <string name="settings_title">Settings</string>
-    <string name="apps_title">Apps</string>
     <string name="log_title">Log</string>
 
     <!-- Main screen -->
@@ -32,8 +30,6 @@
     <string name="pac_info_downloaded">Routing rules: PAC from %1$s</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_log">Log</string>
-    <string name="main_pick_apps">Choose the apps the VPN should work for</string>
-    <string name="action_choose">Choose</string>
     <string name="vpn_permission_denied">Cannot connect without VPN permission</string>
 
     <!-- Common -->
@@ -48,10 +44,7 @@
 
     <!-- Settings: apps -->
     <string name="pref_cat_apps">Apps</string>
-    <string name="pref_apps_title">Apps for the VPN</string>
-    <string name="pref_apps_summary_all">All apps, including system apps</string>
-    <string name="pref_apps_summary_include">Only selected: %1$d</string>
-    <string name="pref_apps_summary_exclude">All except selected: %1$d</string>
+    <string name="pref_apps_title">Browsers only</string>
 
     <!-- Settings: DNS -->
     <string name="pref_cat_dns">DNS</string>
@@ -114,23 +107,12 @@
     <string name="licenses_text">Zastra uses open-source components:\n\n• hev-socks5-tunnel — MIT\n• lwIP — BSD\n• libyaml — MIT\n• hev-task-system — MIT\n• QuickJS-ng — MIT\n• OkHttp and Okio — Apache 2.0\n• AndroidX and Material Components — Apache 2.0\n\nThe built-in PAC script is a project of AntiZapret.</string>
 
     <!-- App selection -->
-    <string name="apps_mode_all">All</string>
-    <string name="apps_mode_include">Only these</string>
-    <string name="apps_mode_exclude">Except these</string>
-    <string name="apps_hint_all">The VPN works for all apps, including system apps. Nothing to select.</string>
-    <string name="apps_hint_include">The VPN works only for the ticked apps.</string>
-    <string name="apps_hint_exclude">The VPN works for all apps except the ticked ones.</string>
-    <string name="apps_restart_note">Changes take effect the next time you connect.</string>
-    <string name="apps_search_hint">Search by name</string>
-    <string name="apps_show_system">System apps</string>
-    <string name="apps_select_all">Select all</string>
-    <string name="apps_select_none">Clear all</string>
-    <string name="apps_counter">Selected: %1$d</string>
-    <string name="apps_empty">Nothing found</string>
-    <string name="apps_system_tag">system</string>
 
     <!-- Log -->
     <string name="log_empty">The log is empty</string>
     <string name="log_copied">Log copied</string>
     <string name="log_cleared">Log cleared</string>
+    <string name="err_no_browsers">No browsers found. Install a browser and connect again.</string>
+    <string name="pref_apps_summary_list">The VPN works only for browsers: %1$s</string>
+    <string name="pref_apps_summary_none">No browsers found</string>
 </resources>

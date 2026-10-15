@@ -21,7 +21,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import app.zastra.vpn.R
-import app.zastra.vpn.data.AppMode
 import app.zastra.vpn.data.Settings
 import app.zastra.vpn.databinding.ActivityMainBinding
 import app.zastra.vpn.util.LocaleHelper
@@ -155,14 +154,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun beginConnect() {
-        if (settings.appMode == AppMode.INCLUDE && settings.selectedApps.none { it != packageName }) {
-            Snackbar.make(b.root, R.string.main_pick_apps, Snackbar.LENGTH_LONG)
-                .setAction(R.string.action_choose) {
-                    startActivity(Intent(this, AppsActivity::class.java))
-                }
-                .show()
-            return
-        }
         if (Build.VERSION.SDK_INT >= 33 &&
             !settings.notificationPermissionAsked &&
             ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) !=

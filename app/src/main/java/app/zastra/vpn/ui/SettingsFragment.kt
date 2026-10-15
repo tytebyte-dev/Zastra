@@ -21,13 +21,13 @@ import androidx.preference.PreferenceGroup
 import androidx.preference.SwitchPreferenceCompat
 import app.zastra.vpn.BuildConfig
 import app.zastra.vpn.R
-import app.zastra.vpn.data.AppMode
 import app.zastra.vpn.data.DnsPresets
 import app.zastra.vpn.data.Keys
 import app.zastra.vpn.data.Settings
 import app.zastra.vpn.net.DnsFactory
 import app.zastra.vpn.net.PacStore
 import app.zastra.vpn.util.LocaleHelper
+import app.zastra.vpn.vpn.BrowserDetector
 import app.zastra.vpn.vpn.VpnState
 import app.zastra.vpn.vpn.VpnStatus
 import app.zastra.vpn.vpn.ZastraVpnService
@@ -81,19 +81,15 @@ class SettingsFragment : PreferenceFragmentCompat() {
     // ------------------------------------------------------------------ приложения
 
     private fun setupApps() {
-        pref<Preference>(PREF_APPS).setOnPreferenceClickListener {
-            startActivity(Intent(requireContext(), AppsActivity::class.java))
-            true
-        }
+        // Только информация: выбирать приложения не нужно, VPN работает для браузеров.
+        pref<Preference>(PREF_APPS).isSelectable = false
     }
 
     private fun refreshApps() {
-        val count = settings.selectedApps.filter { it != requireContext().packageName }.size
-        pref<Preference>(PREF_APPS).summary = when (settings.appMode) {
-            AppMode.ALL -> getString(R.string.pref_apps_summary_all)
-            AppMode.INCLUDE -> getString(R.string.pref_apps_summary_include, count)
-            AppMode.EXCLUDE -> getString(R.string.pref_apps_summary_exclude, count)
-        }
+        val names = BrowserDetector.find(requireContext()).joinToString { it.label }
+        pref<Preference>(PREF_APPS).summary =
+            if (names.isEmpty()) getString(R.string.pref_apps_summary_none)
+            else getString(R.string.pref_apps_summary_list, names)
     }
 
     // ------------------------------------------------------------------ DNS

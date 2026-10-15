@@ -22,7 +22,6 @@ import app.zastra.vpn.core.socks.RouteDecider
 import app.zastra.vpn.core.socks.SocketProtector
 import app.zastra.vpn.core.socks.Socks5Server
 import app.zastra.vpn.core.util.ZLog
-import app.zastra.vpn.data.AppMode
 import app.zastra.vpn.data.Settings
 import app.zastra.vpn.net.DnsFactory
 import app.zastra.vpn.net.OkHttpPoster
@@ -209,37 +208,23 @@ class ZastraVpnService : VpnService() {
         return b.establish()
     }
 
-    /** Какие приложения идут через VPN. Само приложение Zastra из VPN всегда исключено. */
+    /**
+     * VPN работает только для установленных браузеров, остальные приложения идут мимо него.
+     * Список браузеров определяется при каждом подключении.
+     */
     private fun applyAppRules(b: Builder) {
-        val self = packageName
-        val selected = settings.selectedApps.filter { it != self }
-        when (settings.appMode) {
-            AppMode.ALL -> disallow(b, self)
-            AppMode.EXCLUDE -> {
-                disallow(b, self)
-                selected.forEach { disallow(b, it) }
-            }
-            AppMode.INCLUDE -> {
-                var added = 0
-                for (pkg in selected) {
-                    try {
-                        b.addAllowedApplication(pkg)
-                        added++
-                    } catch (e: PackageManager.NameNotFoundException) {
-                        ZLog.w(TAG, "приложение $pkg не найдено, пропускаем")
-                    }
-                }
-                if (added == 0) throw IllegalStateException(getString(R.string.err_no_apps_selected))
+        val browsers = BrowserDetector.find(this)
+        var added = 0
+        for (br in browsers) {
+            try {
+                b.addAllowedApplication(br.packageName)
+                added++
+            } catch (e: PackageManager.NameNotFoundException) {
+                ZLog.w(TAG, "браузер ${br.packageName} не найден, пропускаем")
             }
         }
-    }
-
-    private fun disallow(b: Builder, pkg: String) {
-        try {
-            b.addDisallowedApplication(pkg)
-        } catch (e: PackageManager.NameNotFoundException) {
-            ZLog.w(TAG, "приложение $pkg не найдено, пропускаем")
-        }
+        if (added == 0) throw IllegalStateException(getString(R.string.err_no_browsers))
+        ZLog.i(TAG, "VPN для браузеров: " + browsers.joinToString { it.packageName })
     }
 
     // ------------------------------------------------------------------ остановка
