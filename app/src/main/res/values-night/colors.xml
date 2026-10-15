@@ -9,6 +9,8 @@
     <color name="zastra_surface">#141318</color>
     <color name="zastra_on_surface">#E5E1E9</color>
 
+    <color name="zastra_on_surface_variant">#CAC4D6</color>
+
     <color name="state_off">#5E5A73</color>
     <color name="state_connecting">#C99400</color>
     <color name="state_on">#2FB36B</color>

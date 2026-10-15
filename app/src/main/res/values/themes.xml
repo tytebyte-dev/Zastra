@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Android 10 и ниже (в том числе MIUI): Material Components (Bridge).
+     Атрибуты Material 3, которые используют разметка и код, сопоставлены с их аналогами. -->
 <resources>
-    <style name="Theme.Zastra" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Zastra" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <item name="colorPrimary">@color/zastra_primary</item>
         <item name="colorOnPrimary">@color/zastra_on_primary</item>
         <item name="colorPrimaryContainer">@color/zastra_primary_container</item>
@@ -9,5 +11,14 @@
         <item name="android:colorBackground">@color/zastra_background</item>
         <item name="colorSurface">@color/zastra_surface</item>
         <item name="colorOnSurface">@color/zastra_on_surface</item>
+        <item name="colorOnSurfaceVariant">@color/zastra_on_surface_variant</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.MaterialComponents.Headline6</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.MaterialComponents.Body1</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.MaterialComponents.Body2</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.MaterialComponents.Caption</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.MaterialComponents.Button</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.MaterialComponents.Overline</item>
     </style>
+
+    <style name="Widget.Zastra.SearchField" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox" />
 </resources>

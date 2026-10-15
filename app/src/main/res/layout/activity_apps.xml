@@ -73,7 +73,7 @@
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            style="@style/Widget.Zastra.SearchField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -99,7 +99,7 @@
             android:paddingHorizontal="16dp"
             android:paddingTop="8dp">
 
-            <com.google.android.material.materialswitch.MaterialSwitch
+            <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/switchSystem"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
