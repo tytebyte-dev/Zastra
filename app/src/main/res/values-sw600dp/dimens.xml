@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Планшет и Android TV: кнопка крупнее -->
+    <dimen name="power_frame">320dp</dimen>
+    <dimen name="power_indicator">304dp</dimen>
+    <dimen name="power_size">248dp</dimen>
+    <dimen name="power_radius">124dp</dimen>
+    <dimen name="power_icon">112dp</dimen>
+    <dimen name="logo_size">96dp</dimen>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Размеры главной кнопки: телефон -->
+    <dimen name="power_frame">240dp</dimen>
+    <dimen name="power_indicator">224dp</dimen>
+    <dimen name="power_size">184dp</dimen>
+    <dimen name="power_radius">92dp</dimen>
+    <dimen name="power_icon">84dp</dimen>
+    <dimen name="logo_size">72dp</dimen>
+</resources>

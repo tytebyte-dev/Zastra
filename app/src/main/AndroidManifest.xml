@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Работает и на телефонах, и на планшетах, и на Android TV (без сенсорного экрана) -->
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
@@ -15,6 +23,7 @@
     <application
         android:name=".ZastraApp"
         android:allowBackup="false"
+        android:banner="@drawable/banner"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -23,28 +32,37 @@
 
         <activity
             android:name=".ui.MainActivity"
+            android:resizeableActivity="true"
+            android:screenOrientation="fullUser"
             android:exported="true"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
 
         <activity
             android:name=".ui.SettingsActivity"
+            android:resizeableActivity="true"
+            android:screenOrientation="fullUser"
             android:exported="false"
             android:label="@string/settings_title"
             android:parentActivityName=".ui.MainActivity" />
 
         <activity
             android:name=".ui.AppsActivity"
+            android:resizeableActivity="true"
+            android:screenOrientation="fullUser"
             android:exported="false"
             android:label="@string/apps_title"
             android:parentActivityName=".ui.SettingsActivity" />
 
         <activity
             android:name=".ui.LogActivity"
+            android:resizeableActivity="true"
+            android:screenOrientation="fullUser"
             android:exported="false"
             android:label="@string/log_title"
             android:parentActivityName=".ui.MainActivity" />

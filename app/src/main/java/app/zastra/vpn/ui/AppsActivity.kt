@@ -141,7 +141,9 @@ class AppsActivity : AppCompatActivity() {
                 AppMode.EXCLUDE -> R.string.apps_hint_exclude
             },
         )
-        b.selectionGroup.visibility = if (m == AppMode.ALL) View.GONE else View.VISIBLE
+        val visibility = if (m == AppMode.ALL) View.GONE else View.VISIBLE
+        b.selectionGroup.visibility = visibility
+        b.listContainer.visibility = visibility
     }
 
     // ------------------------------------------------------------------ список

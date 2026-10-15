@@ -66,6 +66,8 @@ class MainActivity : AppCompatActivity() {
 
         shownColor = ContextCompat.getColor(this, R.color.state_off)
         b.powerButton.setOnClickListener { onPowerClick() }
+        setupFocusEffect()
+        setupTelevision()
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -73,6 +75,27 @@ class MainActivity : AppCompatActivity() {
                 launch { VpnState.traffic.collect { renderStats() } }
             }
         }
+    }
+
+    /** Подсветка кнопки при выборе пультом или клавиатурой. */
+    private fun setupFocusEffect() {
+        val card = b.powerButton
+        val stroke = (6 * resources.displayMetrics.density).toInt()
+        card.setOnFocusChangeListener { _, focused ->
+            card.strokeWidth = if (focused) stroke else 0
+            card.strokeColor = ContextCompat.getColor(this, R.color.zastra_on_surface)
+            card.animate().scaleX(if (focused) 1.06f else 1f).scaleY(if (focused) 1.06f else 1f)
+                .setDuration(120).start()
+        }
+    }
+
+    /** На телевизоре меню в панели не достать пультом — показываем обычные кнопки. */
+    private fun setupTelevision() {
+        if (!isTelevision(this)) return
+        b.tvActions.visibility = View.VISIBLE
+        b.btnSettings.setOnClickListener { startActivity(Intent(this, SettingsActivity::class.java)) }
+        b.btnLog.setOnClickListener { startActivity(Intent(this, LogActivity::class.java)) }
+        b.powerButton.requestFocus()
     }
 
     override fun onResume() {
