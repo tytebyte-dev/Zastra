@@ -129,7 +129,7 @@ jobs:
           path: dist/*.apk
           if-no-files-found: error
 
-    release:
+  release:
     name: Публикация релиза
     needs: apk
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
