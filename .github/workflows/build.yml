@@ -129,10 +129,10 @@ jobs:
           path: dist/*.apk
           if-no-files-found: error
 
-  release:
+    release:
     name: Публикация релиза
     needs: apk
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/download-artifact@v8
@@ -147,6 +147,11 @@ jobs:
         run: |
           if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
             gh release create "$GITHUB_REF_NAME" dist/*.apk \
+              --title "Zastra $VERSION" --generate-notes
+          elif [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
+            # Ручной запуск: тег v<версия> создаётся автоматически на текущем коммите
+            gh release create "v$VERSION" dist/*.apk \
+              --target "$GITHUB_SHA" \
               --title "Zastra $VERSION" --generate-notes
           else
             # Каждый push в main — отдельный пре-релиз с APK
