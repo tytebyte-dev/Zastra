@@ -177,7 +177,7 @@ class MainActivity : AppCompatActivity() {
             hint = error
             b.hintText.setTextColor(ContextCompat.getColor(this, R.color.state_error))
         } else {
-            b.hintText.setTextColor(MaterialColors.getColor(b.hintText, MaterialR.attr.colorOnSurfaceVariant))
+            b.hintText.setTextColor(MaterialColors.getColor(b.hintText, MaterialR.attr.colorOnSurfaceVariant, ContextCompat.getColor(this, R.color.state_off)))
         }
         b.hintText.text = hint
 
