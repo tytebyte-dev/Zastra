@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dns_mode_entries">
+        <item>DoH — DNS over HTTPS</item>
+        <item>Plain DNS (UDP/TCP)</item>
+    </string-array>
+    <string-array name="doh_provider_entries">
+        <item>Google DNS</item>
+        <item>Cloudflare</item>
+        <item>Quad9</item>
+        <item>AdGuard DNS</item>
+        <item>Custom address…</item>
+    </string-array>
+</resources>

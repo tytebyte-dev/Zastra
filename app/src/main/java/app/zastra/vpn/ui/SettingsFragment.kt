@@ -11,6 +11,8 @@ import android.os.Looper
 import android.text.InputType
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.preference.EditTextPreference
 import androidx.preference.ListPreference
 import androidx.preference.Preference
@@ -25,6 +27,7 @@ import app.zastra.vpn.data.Keys
 import app.zastra.vpn.data.Settings
 import app.zastra.vpn.net.DnsFactory
 import app.zastra.vpn.net.PacStore
+import app.zastra.vpn.util.LocaleHelper
 import app.zastra.vpn.vpn.VpnState
 import app.zastra.vpn.vpn.VpnStatus
 import app.zastra.vpn.vpn.ZastraVpnService
@@ -42,6 +45,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         settings = Settings.get(requireContext())
         setPreferencesFromResource(R.xml.preferences, rootKey)
+        setupLanguage()
         setupApps()
         setupDns()
         setupSocks()
@@ -60,6 +64,18 @@ class SettingsFragment : PreferenceFragmentCompat() {
     override fun onDestroy() {
         mainHandler.removeCallbacksAndMessages(null)
         super.onDestroy()
+    }
+
+    // ------------------------------------------------------------------ язык
+
+    private fun setupLanguage() {
+        val lang = pref<ListPreference>(Keys.APP_LANGUAGE)
+        if (lang.value == null) lang.value = LocaleHelper.RU
+        lang.setOnPreferenceChangeListener { _, v ->
+            settings.language = v as String
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(v))
+            true
+        }
     }
 
     // ------------------------------------------------------------------ приложения

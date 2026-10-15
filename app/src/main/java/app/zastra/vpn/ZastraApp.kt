@@ -3,16 +3,20 @@ package app.zastra.vpn
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import app.zastra.vpn.core.util.ZLog
 import java.io.File
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.os.LocaleListCompat
 import app.zastra.vpn.data.Settings
+import app.zastra.vpn.util.LocaleHelper
 import app.zastra.vpn.util.LogBuffer
 
 class ZastraApp : Application() {
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleHelper.wrap(base))
+    }
+
     override fun onCreate() {
         super.onCreate()
         installCrashReporter()
@@ -20,14 +24,6 @@ class ZastraApp : Application() {
         reportPreviousCrash()
         // Любая ошибка инициализации не должна ронять приложение при запуске
         // (на некоторых оболочках, например MIUI, часть системных вызовов ведёт себя иначе).
-        safely("язык") {
-            // Интерфейс всегда на русском (в том числе строки библиотек Material/AndroidX).
-            // До Android 13 не трогаем: наши строки и так русские, а вызов на старых
-            // оболочках (MIUI) пересоздаёт окна и может ронять запуск.
-            if (Build.VERSION.SDK_INT >= 33) {
-                AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("ru"))
-            }
-        }
         // Логин, пароль и порт локального SOCKS5 создаются при первом запуске.
         safely("учётные данные") { Settings.get(this).ensureCredentials() }
         safely("канал уведомлений") { createNotificationChannel() }

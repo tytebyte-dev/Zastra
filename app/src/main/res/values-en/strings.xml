@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Notification and service errors -->
+    <string name="notif_channel_name">VPN status</string>
+    <string name="notif_channel_desc">Shows that the Zastra VPN is running</string>
+    <string name="notif_connecting">Connecting…</string>
+    <string name="notif_connected">VPN connected</string>
+    <string name="notif_disconnect">Disconnect</string>
+    <string name="err_vpn_revoked">VPN permission was revoked by the system or another app</string>
+    <string name="err_tunnel_start">Could not start the tunnel</string>
+    <string name="err_tunnel_died">The tunnel stopped unexpectedly</string>
+    <string name="err_generic">Could not start the VPN</string>
+    <string name="err_no_apps_selected">No apps selected. Open “Apps” and tick the ones you need.</string>
+
+    <!-- Screen titles -->
+    <string name="settings_title">Settings</string>
+    <string name="apps_title">Apps</string>
+    <string name="log_title">Log</string>
+
+    <!-- Main screen -->
+    <string name="connect_button_cd">Turn the VPN on or off</string>
+    <string name="status_disconnected">Disconnected</string>
+    <string name="status_connecting">Connecting…</string>
+    <string name="status_connected">Connected</string>
+    <string name="status_disconnecting">Disconnecting…</string>
+    <string name="hint_connect">Tap to connect</string>
+    <string name="hint_connecting">Tap to cancel</string>
+    <string name="hint_connected">Tap to disconnect</string>
+    <string name="hint_disconnecting">Please wait…</string>
+    <string name="stats_format">↑ %1$s    ↓ %2$s    Connections: %3$d</string>
+    <string name="pac_info_builtin">Routing rules: built-in PAC</string>
+    <string name="pac_info_downloaded">Routing rules: PAC from %1$s</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_log">Log</string>
+    <string name="main_pick_apps">Choose the apps the VPN should work for</string>
+    <string name="action_choose">Choose</string>
+    <string name="vpn_permission_denied">Cannot connect without VPN permission</string>
+
+    <!-- Common -->
+    <string name="menu_copy">Copy</string>
+    <string name="menu_clear">Clear</string>
+    <string name="dialog_copy">Copy</string>
+    <string name="dialog_close">Close</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_create">Create</string>
+    <string name="dialog_reset">Reset</string>
+    <string name="copied">Copied</string>
+
+    <!-- Settings: apps -->
+    <string name="pref_cat_apps">Apps</string>
+    <string name="pref_apps_title">Apps for the VPN</string>
+    <string name="pref_apps_summary_all">All apps, including system apps</string>
+    <string name="pref_apps_summary_include">Only selected: %1$d</string>
+    <string name="pref_apps_summary_exclude">All except selected: %1$d</string>
+
+    <!-- Settings: DNS -->
+    <string name="pref_cat_dns">DNS</string>
+    <string name="pref_dns_mode">DNS type</string>
+    <string name="pref_doh_provider">DoH provider</string>
+    <string name="pref_doh_custom_url">DoH server address</string>
+    <string name="pref_doh_custom_message">An address like https://dns.example.com/dns-query</string>
+    <string name="pref_dns_primary">Primary DNS server</string>
+    <string name="pref_dns_secondary">Secondary DNS server</string>
+    <string name="pref_dns_message">An IPv4 or IPv6 address, optionally with a port. For example: 8.8.8.8</string>
+    <string name="pref_dns_fallback">Plain DNS fallback</string>
+    <string name="pref_dns_fallback_summary">If DoH is unavailable, use the plain DNS servers</string>
+    <string name="err_dns_address">Enter a valid IP address, for example 8.8.8.8</string>
+    <string name="err_doh_url">The address must start with https://</string>
+
+    <!-- Settings: SOCKS5 -->
+    <string name="pref_cat_socks">Local SOCKS5 proxy</string>
+    <string name="pref_socks_address">Address</string>
+    <string name="pref_socks_user">Username</string>
+    <string name="pref_socks_pass">Password</string>
+    <string name="pref_socks_pass_hidden">Tap to show</string>
+    <string name="pref_socks_copy">Copy link</string>
+    <string name="pref_socks_copy_summary">socks5://username:password@address:port</string>
+    <string name="pref_socks_regen">Generate new credentials</string>
+    <string name="pref_socks_regen_summary">New username, password and port. Available while the VPN is off</string>
+    <string name="socks_note">The proxy works only on this device and only while the VPN is on. The username and password were generated automatically on first launch.</string>
+    <string name="regen_confirm_title">Generate new credentials?</string>
+    <string name="regen_confirm_message">The old username and password will stop working. Apps that use this proxy will need to be configured again.</string>
+    <string name="regen_done">New username, password and port created</string>
+    <string name="err_stop_vpn_first">Turn the VPN off first</string>
+
+    <!-- Settings: PAC -->
+    <string name="pref_cat_pac">Routing script (PAC)</string>
+    <string name="pref_pac_url">PAC address</string>
+    <string name="pref_pac_auto">Update automatically</string>
+    <string name="pref_pac_auto_summary">Once a day when connecting</string>
+    <string name="pref_pac_update">Update now</string>
+    <string name="pref_pac_reset">Return to the built-in PAC</string>
+    <string name="pac_state_builtin">Using the built-in PAC</string>
+    <string name="pac_state_downloaded">Using the downloaded PAC from %1$s</string>
+    <string name="pac_updating">Downloading…</string>
+    <string name="pac_updated">PAC updated</string>
+    <string name="pac_rate_limited">Wait %1$d s before the next update</string>
+    <string name="pac_failed">Update failed: %1$s</string>
+    <string name="pac_reset_confirm">The downloaded PAC will be deleted and the built-in one will be used.</string>
+    <string name="pac_reset_done">Built-in PAC restored</string>
+    <string name="pac_err_https">The PAC address must start with https://</string>
+    <string name="pac_err_http">The server responded: HTTP %1$d</string>
+    <string name="pac_err_too_big">The PAC file is too large</string>
+    <string name="pac_err_not_pac">The response does not look like a PAC script</string>
+    <string name="pac_err_check">The PAC failed validation: %1$s</string>
+    <string name="pac_err_save">Could not save the PAC: %1$s</string>
+
+    <!-- Settings: language, about -->
+    <string name="pref_cat_language">Language</string>
+    <string name="pref_language">App language</string>
+    <string name="pref_cat_about">About</string>
+    <string name="pref_version">Version</string>
+    <string name="pref_licenses">Open-source licenses</string>
+    <string name="licenses_text">Zastra uses open-source components:\n\n• hev-socks5-tunnel — MIT\n• lwIP — BSD\n• libyaml — MIT\n• hev-task-system — MIT\n• QuickJS-ng — MIT\n• OkHttp and Okio — Apache 2.0\n• AndroidX and Material Components — Apache 2.0\n\nThe built-in PAC script is a project of AntiZapret.</string>
+
+    <!-- App selection -->
+    <string name="apps_mode_all">All</string>
+    <string name="apps_mode_include">Only these</string>
+    <string name="apps_mode_exclude">Except these</string>
+    <string name="apps_hint_all">The VPN works for all apps, including system apps. Nothing to select.</string>
+    <string name="apps_hint_include">The VPN works only for the ticked apps.</string>
+    <string name="apps_hint_exclude">The VPN works for all apps except the ticked ones.</string>
+    <string name="apps_restart_note">Changes take effect the next time you connect.</string>
+    <string name="apps_search_hint">Search by name</string>
+    <string name="apps_show_system">System apps</string>
+    <string name="apps_select_all">Select all</string>
+    <string name="apps_select_none">Clear all</string>
+    <string name="apps_counter">Selected: %1$d</string>
+    <string name="apps_empty">Nothing found</string>
+    <string name="apps_system_tag">system</string>
+
+    <!-- Log -->
+    <string name="log_empty">The log is empty</string>
+    <string name="log_copied">Log copied</string>
+    <string name="log_cleared">Log cleared</string>
+</resources>

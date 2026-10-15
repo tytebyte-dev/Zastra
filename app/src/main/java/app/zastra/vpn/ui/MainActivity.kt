@@ -14,6 +14,8 @@ import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -22,11 +24,13 @@ import app.zastra.vpn.R
 import app.zastra.vpn.data.AppMode
 import app.zastra.vpn.data.Settings
 import app.zastra.vpn.databinding.ActivityMainBinding
+import app.zastra.vpn.util.LocaleHelper
 import app.zastra.vpn.vpn.VpnSnapshot
 import app.zastra.vpn.vpn.VpnState
 import app.zastra.vpn.vpn.VpnStatus
 import app.zastra.vpn.vpn.ZastraVpnService
 import com.google.android.material.color.MaterialColors
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import com.google.android.material.R as MaterialR
@@ -68,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         b.powerButton.setOnClickListener { onPowerClick() }
         setupFocusEffect()
         setupTelevision()
+        if (settings.language == null) showLanguageDialog()
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -75,6 +80,20 @@ class MainActivity : AppCompatActivity() {
                 launch { VpnState.traffic.collect { renderStats() } }
             }
         }
+    }
+
+    /** Один раз при самом первом запуске: выбор языка интерфейса. */
+    private fun showLanguageDialog() {
+        val tags = arrayOf(LocaleHelper.RU, LocaleHelper.EN)
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.lang_dialog_title)
+            .setCancelable(false)
+            .setItems(arrayOf("Русский", "English")) { _, which ->
+                val tag = tags[which]
+                settings.language = tag
+                AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(tag))
+            }
+            .show()
     }
 
     /** Подсветка кнопки при выборе пультом или клавиатурой. */

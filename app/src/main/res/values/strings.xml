@@ -127,4 +127,15 @@
     <string name="log_empty">Журнал пуст</string>
     <string name="log_copied">Журнал скопирован</string>
     <string name="log_cleared">Журнал очищен</string>
+
+    <!-- Язык -->
+    <string name="pref_cat_language">Язык</string>
+    <string name="pref_language">Язык приложения</string>
+    <string name="pac_err_https">Адрес PAC должен начинаться с https://</string>
+    <string name="pac_err_http">Сервер ответил: HTTP %1$d</string>
+    <string name="pac_err_too_big">Файл PAC слишком большой</string>
+    <string name="pac_err_not_pac">Ответ сервера не похож на PAC-сценарий</string>
+    <string name="pac_err_check">PAC не прошёл проверку: %1$s</string>
+    <string name="pac_err_save">Не удалось сохранить PAC: %1$s</string>
+    <string name="lang_dialog_title" translatable="false">Язык / Language</string>
 </resources>

@@ -30,6 +30,7 @@ object Keys {
 
     const val VPN_SHOULD_RUN = "vpn_should_run"
     const val NOTIF_ASKED = "notif_permission_asked"
+    const val APP_LANGUAGE = "app_language"
 }
 
 /** Режим выбора приложений. */
@@ -167,6 +168,11 @@ class Settings private constructor(context: Context) {
     var vpnShouldRun: Boolean
         get() = prefs.getBoolean(Keys.VPN_SHOULD_RUN, false)
         set(v) = prefs.edit().putBoolean(Keys.VPN_SHOULD_RUN, v).apply()
+
+    /** Язык интерфейса: "ru" или "en"; null — пользователь ещё не выбирал (первый запуск). */
+    var language: String?
+        get() = prefs.getString(Keys.APP_LANGUAGE, null)
+        set(v) = prefs.edit().putString(Keys.APP_LANGUAGE, v).apply()
 
     var notificationPermissionAsked: Boolean
         get() = prefs.getBoolean(Keys.NOTIF_ASKED, false)

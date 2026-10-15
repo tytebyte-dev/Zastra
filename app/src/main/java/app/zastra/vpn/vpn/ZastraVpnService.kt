@@ -27,6 +27,7 @@ import app.zastra.vpn.data.Settings
 import app.zastra.vpn.net.DnsFactory
 import app.zastra.vpn.net.OkHttpPoster
 import app.zastra.vpn.net.PacStore
+import app.zastra.vpn.util.LocaleHelper
 import app.zastra.vpn.ui.MainActivity
 import hev.htproxy.TProxyService
 import java.io.File
@@ -69,6 +70,10 @@ class ZastraVpnService : VpnService() {
     private val protector = object : SocketProtector {
         override fun protect(socket: Socket): Boolean = this@ZastraVpnService.protect(socket)
         override fun protect(socket: DatagramSocket): Boolean = this@ZastraVpnService.protect(socket)
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LocaleHelper.wrap(newBase))
     }
 
     override fun onCreate() {

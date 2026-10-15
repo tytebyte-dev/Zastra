@@ -1,6 +1,7 @@
 package app.zastra.vpn.net
 
 import android.content.Context
+import app.zastra.vpn.R
 import app.zastra.vpn.core.pac.PacEngine
 import app.zastra.vpn.core.util.ZLog
 import app.zastra.vpn.data.Settings
@@ -49,7 +50,7 @@ class PacStore(private val context: Context, private val settings: Settings) {
 
         val url = settings.pacUrl
         if (!url.startsWith("https://", ignoreCase = true)) {
-            return UpdateResult.Failed("Адрес PAC должен начинаться с https://")
+            return UpdateResult.Failed(context.getString(R.string.pac_err_https))
         }
         val text: String
         try {
@@ -61,7 +62,7 @@ class PacStore(private val context: Context, private val settings: Settings) {
                 conn.setRequestProperty("User-Agent", USER_AGENT)
                 conn.setRequestProperty("Accept", "*/*")
                 val code = conn.responseCode
-                if (code != 200) return UpdateResult.Failed("Сервер ответил: HTTP $code")
+                if (code != 200) return UpdateResult.Failed(context.getString(R.string.pac_err_http, code))
                 val out = ByteArrayOutputStream()
                 conn.inputStream.use { input ->
                     val buf = ByteArray(32 * 1024)
@@ -69,7 +70,7 @@ class PacStore(private val context: Context, private val settings: Settings) {
                         val n = input.read(buf)
                         if (n < 0) break
                         out.write(buf, 0, n)
-                        if (out.size() > MAX_SIZE) return UpdateResult.Failed("Файл PAC слишком большой")
+                        if (out.size() > MAX_SIZE) return UpdateResult.Failed(context.getString(R.string.pac_err_too_big))
                     }
                 }
                 text = out.toString("UTF-8")
@@ -82,14 +83,14 @@ class PacStore(private val context: Context, private val settings: Settings) {
         }
 
         if (text.length < MIN_SIZE || !looksLikePac(text)) {
-            return UpdateResult.Failed("Ответ сервера не похож на PAC-сценарий")
+            return UpdateResult.Failed(context.getString(R.string.pac_err_not_pac))
         }
         // Проверяем, что сценарий действительно исполняется, прежде чем заменять рабочий.
         try {
             PacEngine().use { it.load(text) }
         } catch (e: Throwable) {
             ZLog.w(TAG, "новый PAC не прошёл проверку", e)
-            return UpdateResult.Failed("PAC не прошёл проверку: " + (e.message ?: e.javaClass.simpleName))
+            return UpdateResult.Failed(context.getString(R.string.pac_err_check, e.message ?: e.javaClass.simpleName))
         }
         try {
             val tmp = File(context.filesDir, "proxy.pac.tmp")
@@ -99,7 +100,7 @@ class PacStore(private val context: Context, private val settings: Settings) {
                 if (!tmp.renameTo(file)) throw IOException("не удалось сохранить файл")
             }
         } catch (e: IOException) {
-            return UpdateResult.Failed("Не удалось сохранить PAC: " + e.message)
+            return UpdateResult.Failed(context.getString(R.string.pac_err_save, e.message ?: ""))
         }
         settings.pacDownloaded = true
         settings.pacUpdatedAt = System.currentTimeMillis()
