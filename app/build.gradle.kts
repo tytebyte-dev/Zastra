@@ -40,9 +40,13 @@ android {
         }
     }
 
-    externalNativeBuild {
-        ndkBuild {
-            path = file("src/main/jni/Android.mk")
+    // В CI нативные библиотеки собирает отдельное задание и кладёт их в src/main/jniLibs
+    // (-PprebuiltNative=true); локально они собираются ndk-build автоматически.
+    if (project.findProperty("prebuiltNative") != "true") {
+        externalNativeBuild {
+            ndkBuild {
+                path = file("src/main/jni/Android.mk")
+            }
         }
     }
 
