@@ -173,7 +173,7 @@ class Settings private constructor(context: Context) {
         set(v) = prefs.edit().putBoolean(Keys.NOTIF_ASKED, v).apply()
 
     companion object {
-        const val DEFAULT_PAC_URL = "https://antizapret.prostovpn.org/proxy.pac"
+        const val DEFAULT_PAC_URL = "https://p.thenewone.lol:8443/proxy.pac"
 
         @Volatile
         private var instance: Settings? = null
