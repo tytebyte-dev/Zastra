@@ -12,3 +12,5 @@ keystore.properties
 *.jks
 *.keystore
 !debug.keystore
+
+!zastra.p12
