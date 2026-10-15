@@ -20,21 +20,21 @@ env:
 jobs:
   native:
     name: Нативная сборка (tun2socks и QuickJS)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 40
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Кэш нативных библиотек
         id: cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: native-out
           key: native-${{ runner.os }}-${{ env.NDK_VERSION }}-${{ hashFiles('app/src/main/jni/**') }}
 
       - name: Установить NDK
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
         with:
           packages: 'ndk;${{ env.NDK_VERSION }}'
 
@@ -52,7 +52,7 @@ jobs:
             NDK_OUT="$RUNNER_TEMP/ndk-obj"
           find "$GITHUB_WORKSPACE/native-out" -name '*.so'
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: native-libs
           path: native-out/jniLibs
@@ -61,26 +61,26 @@ jobs:
   apk:
     name: Сборка APK
     needs: native
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 40
     outputs:
       version: ${{ steps.ver.outputs.name }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: '17'
 
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6
 
-      - uses: android-actions/setup-android@v3
+      - uses: android-actions/setup-android@v4
         with:
           packages: 'platforms;android-35 build-tools;35.0.0'
 
       - name: Получить нативные библиотеки
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: native-libs
           path: app/src/main/jniLibs
@@ -123,7 +123,7 @@ jobs:
           mkdir -p dist
           cp app/build/outputs/apk/release/*.apk "dist/Zastra-${{ steps.ver.outputs.name }}.apk"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: Zastra-${{ steps.ver.outputs.name }}
           path: dist/*.apk
@@ -133,9 +133,9 @@ jobs:
     name: Публикация релиза
     needs: apk
     if: github.event_name == 'push'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: Zastra-${{ needs.apk.outputs.version }}
           path: dist
