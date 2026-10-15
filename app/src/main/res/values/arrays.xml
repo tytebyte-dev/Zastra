@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dns_mode_entries">
+        <item>DoH — DNS через HTTPS</item>
+        <item>Обычный DNS (UDP/TCP)</item>
+    </string-array>
+    <string-array name="dns_mode_values" translatable="false">
+        <item>doh</item>
+        <item>plain</item>
+    </string-array>
+
+    <string-array name="doh_provider_entries">
+        <item>Google DNS</item>
+        <item>Cloudflare</item>
+        <item>Quad9</item>
+        <item>AdGuard DNS</item>
+        <item>Свой адрес…</item>
+    </string-array>
+    <string-array name="doh_provider_values" translatable="false">
+        <item>google</item>
+        <item>cloudflare</item>
+        <item>quad9</item>
+        <item>adguard</item>
+        <item>custom</item>
+    </string-array>
+</resources>

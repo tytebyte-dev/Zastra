@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="zastra_primary">#C8BEFF</color>
+    <color name="zastra_on_primary">#2E1A8F</color>
+    <color name="zastra_primary_container">#4528B0</color>
+    <color name="zastra_on_primary_container">#E5DEFF</color>
+    <color name="zastra_secondary">#CBC2E4</color>
+    <color name="zastra_background">#141318</color>
+    <color name="zastra_surface">#141318</color>
+    <color name="zastra_on_surface">#E5E1E9</color>
+
+    <color name="state_off">#5E5A73</color>
+    <color name="state_connecting">#C99400</color>
+    <color name="state_on">#2FB36B</color>
+    <color name="state_error">#E5637A</color>
+    <color name="button_icon">#FFFFFF</color>
+</resources>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Zastra</string>
+
+    <!-- Уведомление и ошибки сервиса -->
+    <string name="notif_channel_name">Состояние VPN</string>
+    <string name="notif_channel_desc">Показывает, что VPN Zastra работает</string>
+    <string name="notif_connecting">Подключение…</string>
+    <string name="notif_connected">VPN подключён</string>
+    <string name="notif_disconnect">Отключить</string>
+    <string name="err_vpn_revoked">Разрешение на VPN отозвано системой или другим приложением</string>
+    <string name="err_tunnel_start">Не удалось запустить туннель</string>
+    <string name="err_tunnel_died">Туннель неожиданно остановился</string>
+    <string name="err_generic">Не удалось запустить VPN</string>
+    <string name="err_no_apps_selected">Не выбрано ни одного приложения. Откройте «Приложения» и отметьте нужные.</string>
+
+    <!-- Заголовки экранов -->
+    <string name="settings_title">Настройки</string>
+    <string name="apps_title">Приложения</string>
+    <string name="log_title">Журнал</string>
+
+    <!-- Главный экран -->
+    <string name="connect_button_cd">Включить или выключить VPN</string>
+    <string name="status_disconnected">Отключено</string>
+    <string name="status_connecting">Подключение…</string>
+    <string name="status_connected">Подключено</string>
+    <string name="status_disconnecting">Отключение…</string>
+    <string name="hint_connect">Нажмите, чтобы подключиться</string>
+    <string name="hint_connecting">Нажмите, чтобы отменить</string>
+    <string name="hint_connected">Нажмите, чтобы отключиться</string>
+    <string name="hint_disconnecting">Подождите…</string>
+    <string name="stats_format">↑ %1$s    ↓ %2$s    Соединений: %3$d</string>
+    <string name="pac_info_builtin">Правила маршрутизации: встроенный PAC</string>
+    <string name="pac_info_downloaded">Правила маршрутизации: PAC от %1$s</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="menu_log">Журнал</string>
+    <string name="main_pick_apps">Выберите приложения, для которых будет работать VPN</string>
+    <string name="action_choose">Выбрать</string>
+    <string name="vpn_permission_denied">Без разрешения на VPN подключиться нельзя</string>
+
+    <!-- Общие -->
+    <string name="menu_copy">Копировать</string>
+    <string name="menu_clear">Очистить</string>
+    <string name="dialog_copy">Копировать</string>
+    <string name="dialog_close">Закрыть</string>
+    <string name="dialog_cancel">Отмена</string>
+    <string name="dialog_create">Создать</string>
+    <string name="dialog_reset">Вернуть</string>
+    <string name="copied">Скопировано</string>
+
+    <!-- Настройки: приложения -->
+    <string name="pref_cat_apps">Приложения</string>
+    <string name="pref_apps_title">Приложения для VPN</string>
+    <string name="pref_apps_summary_all">Все приложения, включая системные</string>
+    <string name="pref_apps_summary_include">Только выбранные: %1$d</string>
+    <string name="pref_apps_summary_exclude">Все, кроме выбранных: %1$d</string>
+
+    <!-- Настройки: DNS -->
+    <string name="pref_cat_dns">DNS</string>
+    <string name="pref_dns_mode">Тип DNS</string>
+    <string name="pref_doh_provider">Провайдер DoH</string>
+    <string name="pref_doh_custom_url">Адрес DoH-сервера</string>
+    <string name="pref_doh_custom_message">Адрес вида https://dns.example.com/dns-query</string>
+    <string name="pref_dns_primary">Основной DNS-сервер</string>
+    <string name="pref_dns_secondary">Запасной DNS-сервер</string>
+    <string name="pref_dns_message">IPv4- или IPv6-адрес, при необходимости с портом. Например: 8.8.8.8</string>
+    <string name="pref_dns_fallback">Резервный обычный DNS</string>
+    <string name="pref_dns_fallback_summary">Если DoH недоступен, использовать обычные DNS-серверы</string>
+    <string name="err_dns_address">Введите корректный IP-адрес, например 8.8.8.8</string>
+    <string name="err_doh_url">Адрес должен начинаться с https://</string>
+
+    <!-- Настройки: SOCKS5 -->
+    <string name="pref_cat_socks">Локальный SOCKS5-прокси</string>
+    <string name="pref_socks_address">Адрес</string>
+    <string name="pref_socks_user">Логин</string>
+    <string name="pref_socks_pass">Пароль</string>
+    <string name="pref_socks_pass_hidden">Нажмите, чтобы показать</string>
+    <string name="pref_socks_copy">Скопировать ссылку</string>
+    <string name="pref_socks_copy_summary">socks5://логин:пароль@адрес:порт</string>
+    <string name="pref_socks_regen">Создать новые данные</string>
+    <string name="pref_socks_regen_summary">Новые логин, пароль и порт. Доступно, когда VPN выключен</string>
+    <string name="socks_note">Прокси работает только на этом устройстве и только пока включён VPN. Логин и пароль созданы автоматически при первом запуске.</string>
+    <string name="regen_confirm_title">Создать новые данные?</string>
+    <string name="regen_confirm_message">Старые логин и пароль перестанут работать. Приложения, которые используют этот прокси, придётся настроить заново.</string>
+    <string name="regen_done">Созданы новые логин, пароль и порт</string>
+    <string name="err_stop_vpn_first">Сначала отключите VPN</string>
+
+    <!-- Настройки: PAC -->
+    <string name="pref_cat_pac">Сценарий маршрутизации (PAC)</string>
+    <string name="pref_pac_url">Адрес PAC</string>
+    <string name="pref_pac_auto">Обновлять автоматически</string>
+    <string name="pref_pac_auto_summary">Раз в сутки при подключении</string>
+    <string name="pref_pac_update">Обновить сейчас</string>
+    <string name="pref_pac_reset">Вернуться к встроенному PAC</string>
+    <string name="pac_state_builtin">Используется встроенный PAC</string>
+    <string name="pac_state_downloaded">Используется скачанный PAC от %1$s</string>
+    <string name="pac_updating">Загрузка…</string>
+    <string name="pac_updated">PAC обновлён</string>
+    <string name="pac_rate_limited">Подождите %1$d с перед следующим обновлением</string>
+    <string name="pac_failed">Не удалось обновить: %1$s</string>
+    <string name="pac_reset_confirm">Скачанный PAC будет удалён, останется встроенный.</string>
+    <string name="pac_reset_done">Возвращён встроенный PAC</string>
+
+    <!-- Настройки: о программе -->
+    <string name="pref_cat_about">О программе</string>
+    <string name="pref_version">Версия</string>
+    <string name="pref_licenses">Лицензии открытых компонентов</string>
+    <string name="licenses_text">Zastra использует открытые компоненты:\n\n• hev-socks5-tunnel — MIT\n• lwIP — BSD\n• libyaml — MIT\n• hev-task-system — MIT\n• QuickJS-ng — MIT\n• OkHttp и Okio — Apache 2.0\n• AndroidX и Material Components — Apache 2.0\n\nВстроенный PAC-сценарий — проект AntiZapret.</string>
+
+    <!-- Выбор приложений -->
+    <string name="apps_mode_all">Все</string>
+    <string name="apps_mode_include">Только эти</string>
+    <string name="apps_mode_exclude">Кроме этих</string>
+    <string name="apps_hint_all">VPN работает для всех приложений, включая системные. Выбирать ничего не нужно.</string>
+    <string name="apps_hint_include">VPN работает только для отмеченных приложений.</string>
+    <string name="apps_hint_exclude">VPN работает для всех приложений, кроме отмеченных.</string>
+    <string name="apps_restart_note">Изменения вступят в силу при следующем подключении.</string>
+    <string name="apps_search_hint">Поиск по названию</string>
+    <string name="apps_show_system">Системные приложения</string>
+    <string name="apps_select_all">Выбрать все</string>
+    <string name="apps_select_none">Снять все</string>
+    <string name="apps_counter">Выбрано: %1$d</string>
+    <string name="apps_empty">Ничего не найдено</string>
+    <string name="apps_system_tag">системное</string>
+
+    <!-- Журнал -->
+    <string name="log_empty">Журнал пуст</string>
+    <string name="log_copied">Журнал скопирован</string>
+    <string name="log_cleared">Журнал очищен</string>
+</resources>

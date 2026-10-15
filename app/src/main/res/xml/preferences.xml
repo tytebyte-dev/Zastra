@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/pref_cat_apps">
+        <Preference
+            android:key="pref_apps"
+            android:title="@string/pref_apps_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_cat_dns">
+        <ListPreference
+            android:key="dns_mode"
+            android:defaultValue="doh"
+            android:dialogTitle="@string/pref_dns_mode"
+            android:entries="@array/dns_mode_entries"
+            android:entryValues="@array/dns_mode_values"
+            android:title="@string/pref_dns_mode"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:key="doh_provider"
+            android:defaultValue="google"
+            android:dialogTitle="@string/pref_doh_provider"
+            android:entries="@array/doh_provider_entries"
+            android:entryValues="@array/doh_provider_values"
+            android:title="@string/pref_doh_provider"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            android:key="doh_custom_url"
+            android:dialogMessage="@string/pref_doh_custom_message"
+            android:dialogTitle="@string/pref_doh_custom_url"
+            android:title="@string/pref_doh_custom_url"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            android:key="dns_primary"
+            android:defaultValue="8.8.8.8"
+            android:dialogMessage="@string/pref_dns_message"
+            android:dialogTitle="@string/pref_dns_primary"
+            android:title="@string/pref_dns_primary"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            android:key="dns_secondary"
+            android:defaultValue="8.8.4.4"
+            android:dialogMessage="@string/pref_dns_message"
+            android:dialogTitle="@string/pref_dns_secondary"
+            android:title="@string/pref_dns_secondary"
+            app:useSimpleSummaryProvider="true" />
+        <SwitchPreferenceCompat
+            android:key="dns_fallback"
+            android:defaultValue="true"
+            android:summary="@string/pref_dns_fallback_summary"
+            android:title="@string/pref_dns_fallback" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:summary="@string/socks_note"
+        android:title="@string/pref_cat_socks">
+        <Preference
+            android:key="pref_socks_address"
+            android:title="@string/pref_socks_address" />
+        <Preference
+            android:key="pref_socks_user"
+            android:title="@string/pref_socks_user" />
+        <Preference
+            android:key="pref_socks_pass"
+            android:title="@string/pref_socks_pass" />
+        <Preference
+            android:key="pref_socks_copy"
+            android:summary="@string/pref_socks_copy_summary"
+            android:title="@string/pref_socks_copy" />
+        <Preference
+            android:key="pref_socks_regen"
+            android:summary="@string/pref_socks_regen_summary"
+            android:title="@string/pref_socks_regen" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_cat_pac">
+        <EditTextPreference
+            android:key="pac_url"
+            android:dialogTitle="@string/pref_pac_url"
+            android:title="@string/pref_pac_url"
+            app:useSimpleSummaryProvider="true" />
+        <SwitchPreferenceCompat
+            android:key="pac_auto_update"
+            android:defaultValue="true"
+            android:summary="@string/pref_pac_auto_summary"
+            android:title="@string/pref_pac_auto" />
+        <Preference
+            android:key="pref_pac_update"
+            android:title="@string/pref_pac_update" />
+        <Preference
+            android:key="pref_pac_reset"
+            android:title="@string/pref_pac_reset" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_cat_about">
+        <Preference
+            android:key="pref_version"
+            android:selectable="false"
+            android:title="@string/pref_version" />
+        <Preference
+            android:key="pref_licenses"
+            android:title="@string/pref_licenses" />
+    </PreferenceCategory>
+</PreferenceScreen>

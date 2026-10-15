@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:pathData="M12,3.2L12,11.6"
+        android:strokeColor="@color/button_icon"
+        android:strokeLineCap="round"
+        android:strokeWidth="2.2" />
+    <path
+        android:pathData="M7.243,6.331A7.4,7.4 0,1 0,16.757 6.331"
+        android:strokeColor="@color/button_icon"
+        android:strokeLineCap="round"
+        android:strokeWidth="2.2" />
+</vector>

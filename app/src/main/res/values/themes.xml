@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Zastra" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/zastra_primary</item>
+        <item name="colorOnPrimary">@color/zastra_on_primary</item>
+        <item name="colorPrimaryContainer">@color/zastra_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/zastra_on_primary_container</item>
+        <item name="colorSecondary">@color/zastra_secondary</item>
+        <item name="android:colorBackground">@color/zastra_background</item>
+        <item name="colorSurface">@color/zastra_surface</item>
+        <item name="colorOnSurface">@color/zastra_on_surface</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>
