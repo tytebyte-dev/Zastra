@@ -22,7 +22,11 @@ class ZastraApp : Application() {
         // (на некоторых оболочках, например MIUI, часть системных вызовов ведёт себя иначе).
         safely("язык") {
             // Интерфейс всегда на русском (в том числе строки библиотек Material/AndroidX).
-            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("ru"))
+            // До Android 13 не трогаем: наши строки и так русские, а вызов на старых
+            // оболочках (MIUI) пересоздаёт окна и может ронять запуск.
+            if (Build.VERSION.SDK_INT >= 33) {
+                AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("ru"))
+            }
         }
         // Логин, пароль и порт локального SOCKS5 создаются при первом запуске.
         safely("учётные данные") { Settings.get(this).ensureCredentials() }
