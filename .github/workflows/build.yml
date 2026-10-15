@@ -14,11 +14,6 @@ concurrency:
   group: build-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  ANDROID_PLATFORM: 'platforms;android-35'
-  ANDROID_BUILD_TOOLS: 'build-tools;35.0.0'
-  ANDROID_NDK: 'ndk;27.2.12479018'
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,10 +31,25 @@ jobs:
       - name: Настроить Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      - name: Кэш NDK
+        uses: actions/cache@v4
+        with:
+          path: /usr/local/lib/android/sdk/ndk/27.2.12479018
+          key: ndk-27.2.12479018-${{ runner.os }}
+
+      - name: Кэш нативной сборки (ndk-build)
+        uses: actions/cache@v4
+        with:
+          path: |
+            app/.cxx
+            app/build/intermediates/ndkBuild
+          key: native-${{ runner.os }}-${{ hashFiles('app/src/main/jni/**') }}
+          restore-keys: native-${{ runner.os }}-
+
       - name: Установить Android SDK и NDK
-        run: |
-          yes | sdkmanager --licenses > /dev/null || true
-          sdkmanager "$ANDROID_PLATFORM" "$ANDROID_BUILD_TOOLS" "$ANDROID_NDK"
+        uses: android-actions/setup-android@v3
+        with:
+          packages: 'platforms;android-35 build-tools;35.0.0 ndk;27.2.12479018'
 
       - name: Определить версию
         id: ver
